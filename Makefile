@@ -1,4 +1,4 @@
-.PHONY: neovim tmux-conf node direnv-setting uv-setting
+.PHONY: neovim tmux-conf node direnv-setting uv-setting gh-setting gh-check-token
 
 neovim:
 	@chmod +x neovim-setting/init_nvim.sh
@@ -19,3 +19,15 @@ direnv-setting:
 uv-setting:
 	@chmod +x uv-setting/init_uv.sh
 	@cd uv-setting && ./init_uv.sh
+
+gh-setting:
+	@chmod +x gh-setting/init_gh.sh
+	@cd gh-setting && ./init_gh.sh
+
+gh-check-token:
+	@if [ -z "$$GH_TOKEN" ]; then \
+		echo "GH_TOKEN is NOT set. Add 'export GH_TOKEN=<your token>' to .envrc and run 'direnv allow'."; \
+		exit 1; \
+	else \
+		echo "GH_TOKEN is set."; \
+	fi

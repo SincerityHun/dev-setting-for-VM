@@ -41,3 +41,15 @@ VM development environment setup scripts.
 - `make uv-setting`
 
 - Restart your shell or run `source ~/.bashrc` after setup.
+
+### GitHub CLI (gh)
+
+- Install the latest gh from the official release `.deb` without sudo (Ubuntu only):
+
+- `make gh-setting`
+
+- Check that the `GH_TOKEN` environment variable is set:
+
+- `make gh-check-token`
+
+- Manage `GH_TOKEN` via a project `.envrc` (`export GH_TOKEN=<your token>`) and run `direnv allow`. gh authenticates automatically once `GH_TOKEN` is set.
