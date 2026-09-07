@@ -29,6 +29,7 @@ if [ ! -r /etc/os-release ] || ! grep -q '^ID=ubuntu$' /etc/os-release; then
 fi
 
 require_command curl
+require_command git
 require_command dpkg-deb
 
 ARCH="$(uname -m)"
@@ -92,8 +93,18 @@ if [ -z "${GH_TOKEN:-}" ]; then
     echo "NOTE: GH_TOKEN is NOT set in the current environment."
     echo "Add 'export GH_TOKEN=<your token>' to your project .envrc and run 'direnv allow'."
     echo "gh authenticates automatically once GH_TOKEN is set."
+    echo "Then run 'make gh-setting' again to configure git to use gh for authentication."
 else
     echo "GH_TOKEN is set."
+
+    # gh auth setup-git requires an authenticated gh, so it only runs here.
+    if git config --global --get-all credential.https://github.com.helper 2>/dev/null \
+        | grep -q 'gh auth git-credential'; then
+        echo "git is already configured to use gh for GitHub authentication."
+    else
+        echo "Configuring git to use gh for GitHub authentication..."
+        gh auth setup-git
+    fi
 fi
 
 echo "gh setup complete! Restart your shell or run: source $PROFILE"

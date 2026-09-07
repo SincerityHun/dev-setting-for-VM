@@ -53,3 +53,5 @@ VM development environment setup scripts.
 - `make gh-check-token`
 
 - Manage `GH_TOKEN` via a project `.envrc` (`export GH_TOKEN=<your token>`) and run `direnv allow`. gh authenticates automatically once `GH_TOKEN` is set.
+
+- When `GH_TOKEN` is set, `make gh-setting` also configures git to use gh for GitHub authentication (`gh auth setup-git`), so `git push` works without extra credential setup. If you installed gh before setting the token, run `make gh-setting` again once.
