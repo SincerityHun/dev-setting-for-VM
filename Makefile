@@ -1,4 +1,4 @@
-.PHONY: neovim tmux-conf node direnv-setting uv-setting gh-setting gh-check-token
+.PHONY: neovim tmux-conf node direnv-setting uv-setting gh-setting gh-check-token tig-setting
 
 neovim:
 	@chmod +x neovim-setting/init_nvim.sh
@@ -31,3 +31,7 @@ gh-check-token:
 	else \
 		echo "GH_TOKEN is set."; \
 	fi
+
+tig-setting:
+	@chmod +x tig-setting/init_tig.sh
+	@cd tig-setting && ./init_tig.sh

@@ -1,0 +1,5 @@
+set main-view-date   = relative-compact
+set main-view-author = abbreviated
+set ignore-case      = smart-case
+set start-on-head    = yes
+set line-graphics    = utf-8

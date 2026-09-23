@@ -55,3 +55,13 @@ VM development environment setup scripts.
 - Manage `GH_TOKEN` via a project `.envrc` (`export GH_TOKEN=<your token>`) and run `direnv allow`. gh authenticates automatically once `GH_TOKEN` is set.
 
 - When `GH_TOKEN` is set, `make gh-setting` also configures git to use gh for GitHub authentication (`gh auth setup-git`), so `git push` works without extra credential setup. If you installed gh before setting the token, run `make gh-setting` again once.
+
+### tig
+
+- Build the latest tig from source into `~/.local` (no sudo), copy the bundled `~/.tigrc`, and add the `tl` alias (`tig --all`) to `~/.bashrc`:
+
+- `make tig-setting`
+
+- Requires `gcc`, `make`, and ncursesw headers. If configure fails, run `sudo apt install libncursesw5-dev` and retry.
+
+- An existing `~/.tigrc` is backed up to `~/.tigrc.bak.<timestamp>`.
